@@ -97,24 +97,6 @@ const MeetLive = ({ userData }) => {
         setLoading(false)
     })
 
-    const handleMeetJoined = useCallback(({ ans, members }) => {
-        localPeer.setRemoteDescription(ans)
-        if(members[0].socketId !== socket.id){
-            const index = members.findIndex(el => el.socketId === socket.id)
-            const temp = members[index]
-            for(let i = index; i > 0; i--){
-                members[i] = members[i-1]
-            }
-            members[0] = temp
-        }
-        setParticipants(members)
-        members.map(async (m) => {
-            if (m.socketId !== socket.id) {
-                await getRemoteStreams(m.socketId)``
-            }
-        })
-    }, [])
-
     const getRemoteStreams = useCallback(async id => {
         const peer = createPeer()
         await peer.addTransceiver('video', { direction: "recvonly" })
@@ -133,6 +115,24 @@ const MeetLive = ({ userData }) => {
             socket.emit('consumer-ice', { ice: candidate, socketId: id })
         }
         consumers[id] = peer
+    }, [])
+
+    const handleMeetJoined = useCallback(({ ans, members }) => {
+        localPeer.setRemoteDescription(ans)
+        if(members[0].socketId !== socket.id){
+            const index = members.findIndex(el => el.socketId === socket.id)
+            const temp = members[index]
+            for(let i = index; i > 0; i--){
+                members[i] = members[i-1]
+            }
+            members[0] = temp
+        }
+        setParticipants(members)
+        members.map(async (m) => {
+            if (m.socketId !== socket.id) {
+                await getRemoteStreams(m.socketId)``
+            }
+        })
     }, [])
 
     const handleConsume = useCallback(async ({ ans, socketId }) => {
