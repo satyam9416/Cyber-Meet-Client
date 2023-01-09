@@ -11,7 +11,7 @@ export const useSocket = () => React.useContext(SocketContext)
 export const SocketProvider = ({ children }) => {
 
     const getSocket = useCallback(() => io(
-        'http://192.168.0.104:5000/', {
+        'https://cybermeet-server.onrender.com/', {
         transports: ['websocket']
     }), [])
 
