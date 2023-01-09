@@ -1,0 +1,20 @@
+.join-meet-page{
+    flex-grow: 1;
+    background-color: purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+.join-meet-page input{
+    width: 50%;
+    height: 5rem;
+    font-size: 4rem;
+}
+.join-meet-page button{
+    width: 50%;
+    height: 5rem;
+    font-size: 4rem;
+    cursor: pointer;
+}
