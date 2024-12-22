@@ -14,23 +14,28 @@ export const WebRTCProvider = ({ children }) => {
         // ]
         iceServers: [
             {
-                urls: "stun:relay.metered.ca:80",
-            },
-            {
-                urls: "turn:relay.metered.ca:80",
-                username: "07980d6073378245d1ed6ef9",
-                credential: "vkbnV4euCGd/+udF",
-            },
-            {
-                urls: "turn:relay.metered.ca:443",
-                username: "07980d6073378245d1ed6ef9",
-                credential: "vkbnV4euCGd/+udF",
-            },
-            {
-                urls: "turn:relay.metered.ca:443?transport=tcp",
-                username: "07980d6073378245d1ed6ef9",
-                credential: "vkbnV4euCGd/+udF",
-            },
+        urls: "stun:stun.relay.metered.ca:80",
+      },
+      {
+        urls: "turn:standard.relay.metered.ca:80",
+        username: "f5e468243799a579176db227",
+        credential: "c99uOx9T7hK6oYfL",
+      },
+      {
+        urls: "turn:standard.relay.metered.ca:80?transport=tcp",
+        username: "f5e468243799a579176db227",
+        credential: "c99uOx9T7hK6oYfL",
+      },
+      {
+        urls: "turn:standard.relay.metered.ca:443",
+        username: "f5e468243799a579176db227",
+        credential: "c99uOx9T7hK6oYfL",
+      },
+      {
+        urls: "turns:standard.relay.metered.ca:443?transport=tcp",
+        username: "f5e468243799a579176db227",
+        credential: "c99uOx9T7hK6oYfL",
+      },
         ],
     }))
 
